@@ -38,7 +38,8 @@ app.use(helmet({
   contentSecurityPolicy: false // React build uses inline styles; CSP can be tightened per deployment
 }));
 
-const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:3000,http://localhost:3001,http://127.0.0.1:3000,http://127.0.0.1:3001')
+// RENDER_EXTERNAL_URL is set automatically on Render
+const allowedOrigins = (process.env.CLIENT_URL || [process.env.RENDER_EXTERNAL_URL, 'http://localhost:3000,http://localhost:3001,http://127.0.0.1:3000,http://127.0.0.1:3001'].filter(Boolean).join(','))
   .split(',').map(s => s.trim()).filter(Boolean);
 app.use(cors({
   origin: (origin, cb) => (!origin || allowedOrigins.includes(origin) ? cb(null, true) : cb(null, false)),

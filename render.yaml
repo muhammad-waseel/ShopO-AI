@@ -1,0 +1,32 @@
+# Render Blueprint — one-click deploy of ShopO-AI
+# Render dashboard → New → Blueprint → select this repository.
+# You will be asked for MONGO_URI (MongoDB Atlas connection string).
+services:
+  - type: web
+    name: shopo-ai
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false            # entered by you in the Render dashboard
+      - key: JWT_SECRET
+        generateValue: true    # Render creates a strong random secret
+      - key: ADMIN_EMAILS
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: "465"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: GOOGLE_VISION_API_KEY
+        sync: false
+      - key: HF_API_KEY
+        sync: false

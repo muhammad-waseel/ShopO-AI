@@ -77,7 +77,7 @@ const sendSms = async ({ to, body }) => {
  */
 const sendPriceDropNotification = async (user, alert) => {
   const channels = [];
-  const appUrl = process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',')[0] : 'http://localhost:3000';
+  const appUrl = process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',')[0] : (process.env.RENDER_EXTERNAL_URL || 'http://localhost:3000');
   const subject = `Price drop: ${alert.productName.substring(0, 60)} is now $${alert.currentPrice.toFixed(2)}`;
   const text =
     `Good news, ${user.name}!\n\n` +

@@ -62,6 +62,14 @@ Open **http://localhost:3000**, create an account, and you will land on the dash
 docker compose up --build      # → http://localhost:5000
 ```
 
+### Deploy online (Render + MongoDB Atlas, free)
+
+1. **Database:** create a free M0 cluster on MongoDB Atlas. Add a database user, allow access from anywhere (`0.0.0.0/0`) under *Network Access*, and copy the connection string (`mongodb+srv://...`). Add `/shopo-ai` before the `?` so it names the database.
+2. **App:** on render.com, go to **New → Blueprint**, connect this GitHub repo and click **Apply**. When asked, paste the Atlas string into `MONGO_URI`. `JWT_SECRET` is generated automatically.
+3. Wait for the build (about 10 minutes the first time). The site will be at `https://shopo-ai-xxxx.onrender.com`.
+
+On the free plan the app sleeps after 15 minutes without visitors, and the first visit afterwards takes about a minute to wake it.
+
 ### Run the tests
 
 ```bash
