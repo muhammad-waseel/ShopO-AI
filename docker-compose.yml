@@ -1,0 +1,25 @@
+# One-command local deployment:  docker compose up --build
+# App: http://localhost:5000
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on: [mongo]
+    ports:
+      - '5000:5000'
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      MONGO_URI: mongodb://mongo:27017/shopo-ai
+      JWT_SECRET: ${JWT_SECRET:-please_change_this_secret_in_env_file}
+      CLIENT_URL: ${CLIENT_URL:-http://localhost:5000}
+
+volumes:
+  mongo-data:

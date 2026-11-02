@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartShop - AI Shopping Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Custom Hero Section specific to this page */
+        .hero-section {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-search {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .feature-badge {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+        .feature-badge:hover { transform: translateY(-5px); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="/">
+                <i class="fas fa-shopping-cart me-2"></i>SmartShop
+            </a>
+            <div class="d-flex gap-3">
+                <a href="/" class="btn btn-outline-light rounded-pill px-4">Home</a>
+                <a href="#" class="btn btn-light text-primary rounded-pill px-4 fw-bold">Verify Product</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section d-flex align-items-center text-center text-white">
+        
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; background-image: radial-gradient(#fff 2px, transparent 2px); background-size: 30px 30px;"></div>
+
+        <div class="container position-relative z-2">
+            <h1 class="display-3 fw-bold mb-4">Find the <span class="text-warning">Best Deals</span> & <br> Avoid Scams</h1>
+            <p class="lead mb-5 opacity-90 fs-4">Compare prices across Daraz & Amazon instantly. <br> Analyze authenticity with AI.</p>
+
+            <form action="/search" method="GET" class="glass-search mx-auto p-2 rounded-pill shadow-lg d-flex align-items-center" style="max-width: 750px;">
+                <i class="fas fa-search text-muted ms-4 fs-5"></i>
+                <input type="text" name="q" class="form-control form-control-lg border-0 bg-transparent shadow-none ms-2" placeholder="Search for any product (e.g. Samsung A33, Nike Air Max)..." required>
+                <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold" style="background: #0f172a;">Search</button>
+            </form>
+
+            <div class="mt-5 d-flex justify-content-center gap-4 flex-wrap">
+                <div class="feature-badge text-dark"><i class="fas fa-dollar-sign text-success me-2"></i>Best Price</div>
+                <div class="feature-badge text-dark"><i class="fas fa-shield-alt text-primary me-2"></i>Verified</div>
+                <div class="feature-badge text-dark"><i class="fas fa-star text-warning me-2"></i>Top Rated</div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

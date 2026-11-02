@@ -1,0 +1,84 @@
+/* static/style.css */
+:root {
+    --primary-color: #4facfe;
+    --secondary-color: #00f2fe;
+    --dark-blue: #0f172a;
+    --scam-red: #ff5858;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    min-height: 80vh;
+    padding: 2rem 0;
+    color: white;
+}
+
+.search-container {
+    max-width: 700px;
+    width: 90%;
+    background: white;
+    border-radius: 50px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.search-container input {
+    border: none;
+    flex-grow: 1;
+    padding: 10px 20px;
+    outline: none;
+}
+
+/* Cards */
+.product-card {
+    transition: transform 0.3s;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    background: white;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.badge-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.bg-orange {
+    background-color: #ffcc00;
+}
+
+.bg-aliceblue {
+    background-color: #f0f8ff;
+}
+
+/* Similarity to Screenshots */
+.text-primary { color: #4facfe !important; }
+.btn-primary {
+    background-color: #4facfe;
+    border-color: #4facfe;
+}
+.btn-primary:hover {
+    background-color: #00f2fe;
+    border-color: #00f2fe;
+}

@@ -1,0 +1,6 @@
+**/node_modules
+client/build
+.env
+.git
+old_python_backup
+*.log

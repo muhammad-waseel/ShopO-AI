@@ -1,0 +1,28 @@
+{
+  "name": "shopo-ai",
+  "version": "1.0.0",
+  "description": "ShopO-AI — AI-powered price intelligence and product authenticity engine (MERN)",
+  "scripts": {
+    "server": "cd server && node server.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "build": "cd client && npm run build",
+    "test": "cd server && npm test",
+    "seed": "cd server && npm run seed",
+    "start": "cd server && node server.js",
+    "docker": "docker compose up --build"
+  },
+  "keywords": [
+    "mern",
+    "ai",
+    "shopping",
+    "fake-detection",
+    "sentiment-analysis"
+  ],
+  "author": "Syed Ahmad Mujtaba Shah & Muhammad Waseel",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

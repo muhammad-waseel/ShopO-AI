@@ -1,0 +1,31 @@
+.dashboard { display: flex; flex-direction: column; gap: 20px; }
+.dash-hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #fff; border-radius: var(--radius-lg);
+  padding: 28px; display: flex; gap: 24px; align-items: center; justify-content: space-between; flex-wrap: wrap;
+}
+.dash-hero h1 { color: #fff; display: flex; align-items: center; gap: 10px; font-size: 1.6rem; }
+.dash-hero p { color: rgba(255,255,255,.7); }
+.dash-search { flex: 1; min-width: 300px; max-width: 560px; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+.stat-card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px; display: grid;
+  grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 12px; align-items: center; color: var(--text-primary);
+}
+.stat-card:hover { box-shadow: var(--shadow-md); color: var(--text-primary); }
+.stat-card svg { grid-row: span 2; font-size: 1.6rem; color: var(--primary); }
+.stat-card b { font-size: 1.5rem; line-height: 1.1; }
+.stat-card span { font-size: .8rem; color: var(--text-secondary); }
+.alert-banner.unseen { border-color: #2ecc71; box-shadow: 0 0 0 3px rgba(46, 204, 113, .15); }
+.rec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
+.rec-card { position: relative; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px; display: flex; flex-direction: column; gap: 6px; }
+.rec-card img { height: 130px; object-fit: contain; width: 100%; background: #f7f9fc; border-radius: var(--radius-sm); }
+.rec-card .platform-pill { align-self: flex-start; color: #fff; padding: 2px 10px; border-radius: var(--radius-full); font-size: .7rem; font-weight: 600; }
+.rec-card h4 { font-size: .88rem; line-height: 1.35; }
+.rec-meta { display: flex; align-items: center; gap: 8px; font-size: .82rem; flex-wrap: wrap; }
+.rec-meta strong { color: var(--primary-dark); font-size: 1rem; }
+.rec-heart { position: absolute; top: 18px; right: 18px; }
+.rec-actions { display: flex; gap: 6px; margin-top: auto; padding-top: 6px; }
+.quick-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.quick-link { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--text-primary); }
+.quick-link:hover { box-shadow: var(--shadow-md); }
+.quick-link svg { color: var(--primary); font-size: 1.3rem; }

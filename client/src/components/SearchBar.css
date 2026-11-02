@@ -1,0 +1,41 @@
+.searchbar { position: relative; width: 100%; }
+.searchbar-form {
+  display: flex; align-items: center; gap: 4px;
+  background: #fff; border-radius: var(--radius-full); padding: 6px 6px 6px 18px;
+  box-shadow: var(--shadow-lg); border: 2px solid transparent; transition: var(--transition);
+}
+.searchbar-form:focus-within { border-color: var(--primary); }
+.searchbar.compact .searchbar-form { box-shadow: var(--shadow-sm); border: 1px solid var(--border); padding: 4px 4px 4px 14px; }
+.searchbar-icon { color: var(--text-secondary); flex-shrink: 0; font-size: 1.1rem; }
+.searchbar-input { flex: 1; min-width: 0; border: none; padding: 10px 8px; font-size: 1rem; background: transparent; color: var(--text-primary); }
+.searchbar-tool {
+  width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+  color: var(--text-secondary); font-size: 1.15rem; flex-shrink: 0; transition: var(--transition);
+}
+.searchbar-tool:hover:not(:disabled) { background: #eef6ff; color: var(--primary-dark); }
+.searchbar-tool:disabled { opacity: 0.35; cursor: not-allowed; }
+.searchbar-tool.listening { background: #e74c3c; color: #fff; animation: pulse 1.2s infinite; }
+.searchbar-submit {
+  background: var(--primary-gradient); color: #fff; font-weight: 600; padding: 10px 24px;
+  border-radius: var(--radius-full); flex-shrink: 0;
+}
+.searchbar.compact .searchbar-submit { padding: 8px 18px; }
+.searchbar-suggestions {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 50;
+  background: #fff; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); overflow: hidden; text-align: left;
+  border: 1px solid var(--border);
+}
+.searchbar-suggestions li { display: flex; align-items: center; gap: 10px; padding: 10px 16px; cursor: pointer; color: var(--text-primary); }
+.searchbar-suggestions li span { flex: 1; }
+.searchbar-suggestions li small { color: var(--text-secondary); font-size: 0.72rem; text-transform: uppercase; letter-spacing: .04em; }
+.searchbar-suggestions li.active, .searchbar-suggestions li:hover { background: #f1f7ff; }
+.sugg-icon { color: var(--text-secondary); }
+.sugg-icon.trending { color: #e67e22; }
+.sugg-icon.popular { color: #f1c40f; }
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(231,76,60,.5); } 50% { box-shadow: 0 0 0 8px rgba(231,76,60,0); } }
+@media (max-width: 560px) {
+  .searchbar-submit { padding: 10px 14px; }
+  .searchbar-tool { width: 34px; height: 34px; }
+}

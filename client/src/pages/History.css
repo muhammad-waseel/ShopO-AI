@@ -1,0 +1,280 @@
+/* ========================================
+   History.css – Analysis History Page
+   ======================================== */
+
+.history-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ─── Header ─── */
+.history-header {
+  margin-bottom: 2rem;
+}
+
+.history-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--primary);
+}
+
+.history-title-row h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.history-title-row p {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* ─── Empty State ─── */
+.history-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+}
+
+.history-empty svg {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  opacity: 0.4;
+}
+
+.history-empty h3 {
+  margin: 0 0 0.5rem;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+.history-empty p {
+  color: var(--text-secondary);
+  margin: 0 0 1.5rem;
+  font-size: 0.9rem;
+}
+
+.go-search-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.go-search-btn:hover {
+  background: #3d8de0;
+}
+
+/* ─── History List ─── */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.history-item:hover {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 172, 254, 0.12);
+}
+
+/* Image */
+.history-item-image {
+  flex: 0 0 56px;
+}
+
+.history-item-image img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+/* Info */
+.history-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.history-item-info h4 {
+  margin: 0 0 0.3rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-item-meta {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.history-platform {
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.history-price {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Score Circle */
+.history-item-score {
+  flex: 0 0 48px;
+}
+
+.score-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-circle span {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* Verdict Pill */
+.history-item-verdict {
+  flex: 0 0 80px;
+  text-align: center;
+}
+
+.verdict-pill {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid;
+}
+
+/* Action Arrow */
+.history-item-action {
+  flex: 0 0 24px;
+  color: var(--text-secondary);
+}
+
+.history-item:hover .history-item-action {
+  color: var(--primary);
+}
+
+/* ─── Pagination ─── */
+.history-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.page-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.page-btn:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-info {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .history-item {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .history-item-info {
+    flex: 1 1 calc(100% - 80px);
+    order: 1;
+  }
+
+  .history-item-image {
+    order: 0;
+  }
+
+  .history-item-score {
+    order: 2;
+    flex: none;
+  }
+
+  .history-item-verdict {
+    order: 3;
+    flex: none;
+  }
+
+  .history-item-action {
+    order: 4;
+    flex: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-page {
+    padding: 1rem;
+  }
+
+  .history-item {
+    padding: 0.85rem;
+  }
+
+  .history-item-info h4 {
+    font-size: 0.85rem;
+  }
+}

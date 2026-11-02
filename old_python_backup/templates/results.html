@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results - SmartShop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body { background-color: #f3f4f6; }
+        .sidebar-card { background: white; border-radius: 15px; border: none; }
+        .product-card { border: none; border-radius: 15px; transition: 0.3s; background: white; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .badge-overlay { position: absolute; top: 15px; left: 15px; display: flex; gap: 5px; z-index: 10; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary fs-4" href="/">
+                <i class="fas fa-shopping-cart me-2"></i>SmartShop
+            </a>
+            <div class="d-flex gap-3">
+                <a href="/" class="btn btn-light rounded-pill px-4">New Search</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        
+        {% if products|length == 0 %}
+        
+            <div class="text-center mt-5 p-5 bg-white rounded-4 shadow-sm">
+                <div class="mb-3 text-warning display-1"><i class="fas fa-search"></i></div>
+                <h2 class="fw-bold text-dark">Sorry, Product Not Found</h2>
+                <p class="text-muted lead">We checked Daraz &amp; Amazon but couldn't find a reliable match for <strong>"{{ query }}"</strong>.</p>
+                <a href="/" class="btn btn-primary rounded-pill px-5 mt-3">Try Again</a>
+            </div>
+
+        {% else %}
+
+            <div class="row">
+                <div class="col-md-3 d-none d-md-block">
+                    <div class="sidebar-card p-4 shadow-sm">
+                        <h5 class="fw-bold mb-3"><i class="fas fa-filter me-2"></i>Filters</h5>
+                        <hr>
+                        <div class="mb-3">
+                            <label class="fw-bold small text-muted">PLATFORM</label>
+                            <div class="form-check mt-2"><input class="form-check-input" type="checkbox" checked> Daraz</div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" checked> Amazon</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    
+                    <div class="alert alert-warning border-0 shadow-sm d-flex align-items-center mb-4 text-dark" style="background-color: #ffcc00;">
+                        <i class="fas fa-crown fa-2x me-3"></i>
+                        <div>
+                            <strong>Best Deal Found!</strong><br>
+                            We recommend the first product based on the lowest price and authenticity check.
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        {% for product in products %}
+                        <div class="col-md-4 col-sm-6">
+                            <div class="card product-card h-100 shadow-sm {% if product.is_best_deal %} border border-warning border-2 {% endif %}">
+                                
+                                <div class="badge-overlay">
+                                    {% if product.is_best_deal %}
+                                        <span class="badge bg-warning text-dark shadow-sm">Best Deal</span>
+                                    {% endif %}
+                                    <span class="badge {% if product.platform == 'Amazon' %}bg-warning text-dark{% else %}bg-success{% endif %} shadow-sm">
+                                        {{ product.platform }}
+                                    </span>
+                                </div>
+
+                                <div class="p-4 text-center d-flex align-items-center justify-content-center" style="height: 220px;">
+                                    <img src="{{ product.image }}" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                                </div>
+                                
+                                <div class="card-body">
+                                    <h6 class="fw-bold text-dark text-truncate" title="{{ product.name }}">{{ product.name }}</h6>
+                                    
+                                    <div class="d-flex justify-content-between align-items-center mt-2">
+                                        <h4 class="text-primary fw-bold mb-0">{{ product.display_price }}</h4>
+                                    </div>
+                                    
+                                    <hr class="my-3 opacity-25">
+                                    
+                                    <div class="d-grid gap-2">
+                                        <a href="{{ product.link }}" target="_blank" class="btn btn-outline-primary rounded-pill w-100 fw-bold">
+                                            View on Store <i class="fas fa-external-link-alt ms-2"></i>
+                                        </a>
+                                        <form action="/analyze" method="POST">
+                                            <input type="hidden" name="name" value="{{ product.name }}">
+                                            <input type="hidden" name="price" value="{{ product.display_price }}">
+                                            <input type="hidden" name="image" value="{{ product.image }}">
+                                            <input type="hidden" name="platform" value="{{ product.platform }}">
+                                            <button type="submit" class="btn btn-dark rounded-pill w-100 fw-bold">
+                                                <i class="fas fa-robot me-2"></i>Analyze with AI
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+
+        {% endif %} 
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
