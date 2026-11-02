@@ -60,7 +60,14 @@ const ProductDetail = () => {
     }
 
     if (preloadedAnalysis) {
-      setAnalysis(preloadedAnalysis);
+      // Saved analyses store reviews as `reviews`; the live response uses
+      // `analyzedReviews` + `sentimentDetails`. Normalize so both render the same.
+      const saved = preloadedAnalysis.reviews || [];
+      setAnalysis({
+        ...preloadedAnalysis,
+        analyzedReviews: preloadedAnalysis.analyzedReviews || saved,
+        sentimentDetails: preloadedAnalysis.sentimentDetails || { totalReviews: saved.length }
+      });
       setLoading(false);
       return;
     }

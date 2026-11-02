@@ -72,8 +72,8 @@ const SentimentChart = ({ sentimentData }) => {
             outerRadius={100}
             paddingAngle={3}
             dataKey="value"
-            label={({ name, value }) => `${name} ${value}%`}
-            labelLine={true}
+            label={false}
+            labelLine={false}
           >
             {data.map((entry) => (
               <Cell 
